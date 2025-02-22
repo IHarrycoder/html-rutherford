@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation with Centered Button</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        #arrange-apparatus-button,
+        #show-table-button,
+        #show-marbles-button,
+        #show-model-button,
+        #move-to-apparatus-button {
+            display: none;
+            padding: 12px 25px;
+            background-color: #ffcc00;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        #arrange-apparatus-button:hover,
+        #show-table-button:hover,
+        #show-marbles-button:hover,
+        #show-model-button:hover,
+        #move-to-apparatus-button:hover {
+            background-color: #ffdd44;
+        }
+
+        #simulation-link {
+            color: #ffcc00;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        #left-images {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 48%;
+        }
+
+        #right-image {
+            width: 48%;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #model-image {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        #table-image {
+            height: 180px;
+            object-fit: cover;
+        }
+
+        #marbles-image {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <p><span id="simulation-link">1) CHECK APPARATUS (Recommended)</span></p>
+
+    <div class="button-container">
+        <button id="arrange-apparatus-button">Arrange Apparatus</button>
+        <button id="show-table-button">Show Table</button>
+        <button id="show-marbles-button">Show Marbles</button>
+        <button id="show-model-button">Show Model</button>
+        <button id="move-to-apparatus-button" onclick="location.href='simulation.html'">Directly Move to
+            Apparatus</button>
+    </div>
+
+    <div class="image-container">
+        <div id="left-images">
+            <img id="table-image" src="table.png" alt="Table">
+            <img id="marbles-image" src="bowlmarbles.png" alt="Marbles">
+        </div>
+        <div id="right-image">
+            <img id="model-image" src="modell.png" alt="Model">
+        </div>
+    </div>
+    <br>
+    <div>
+        <a href="simulation.html" style="color: #ffcc00; font-size: 18px; font-weight: bold;">2) DIRECTLY GO TO
+            RUTHERFORD MODEL SIMULATION</a>
+    </div>
+
+    <script>
+        const simulationLink = document.getElementById('simulation-link');
+        const arrangeApparatusButton = document.getElementById('arrange-apparatus-button');
+        const showTableButton = document.getElementById('show-table-button');
+        const showMarblesButton = document.getElementById('show-marbles-button');
+        const showModelButton = document.getElementById('show-model-button');
+        const moveToApparatusButton = document.getElementById('move-to-apparatus-button');
+        const tableImage = document.getElementById('table-image');
+        const marblesImage = document.getElementById('marbles-image');
+        const modelImage = document.getElementById('model-image');
+
+        simulationLink.addEventListener('click', function () {
+            arrangeApparatusButton.style.display = 'inline-block';
+        });
+
+        arrangeApparatusButton.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showTableButton.style.display = 'inline-block';
+        });
+
+        showTableButton.addEventListener('click', function () {
+            tableImage.style.display = 'block';
+            showMarblesButton.style.display = 'inline-block';
+        });
+
+        showMarblesButton.addEventListener('click', function () {
+            marblesImage.style.display = 'block';
+            showModelButton.style.display = 'inline-block';
+        });
+
+        showModelButton.addEventListener('click', function () {
+            modelImage.style.display = 'block';
+            moveToApparatusButton.style.display = 'inline-block';
+        });
+    </script>
+</body>
+
+</html>
